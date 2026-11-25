@@ -1,14 +1,565 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Annie Arditi</title>
-</head>
-<body>
-  <h1>Hi, I’m Your Name</h1>
-  <p>Welcome to my website.</p>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <h2>About me</h2>
-  <p>I’m learning about web development and building things!</p>
+  <title>Who Is Annie?</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #f4f0e8;
+      --ink: #171717;
+      --muted: #6c675e;
+      --rule: #8b857b;
+      --serif: "Libre Baskerville", Georgia, serif;
+      --display: "Playfair Display", Georgia, serif;
+      --mono: "DM Mono", monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #d8d1c6;
+      color: var(--ink);
+      font-family: var(--serif);
+      line-height: 1.55;
+    }
+
+    .paper {
+      width: min(1150px, calc(100% - 32px));
+      margin: 24px auto;
+      padding: 30px clamp(20px, 5vw, 60px);
+      background: var(--paper);
+      border: 1px solid #aaa49a;
+      box-shadow: 0 18px 45px rgba(0,0,0,.16);
+    }
+
+    .tiny {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .topline {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .masthead {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 28px 0 22px;
+    }
+
+    .moon {
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      font-size: 38px;
+      transform: rotate(-20deg);
+    }
+
+    h1 {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(3.8rem, 10vw, 8rem);
+      font-style: italic;
+      font-weight: 600;
+      letter-spacing: -.08em;
+      line-height: .85;
+    }
+
+    .issue {
+      margin-left: auto;
+      padding: 9px;
+      border: 1px solid var(--ink);
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      border-top: 3px double var(--ink);
+      border-bottom: 3px double var(--ink);
+    }
+
+    nav a {
+      padding: 9px 17px;
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-decoration: none;
+      text-transform: uppercase;
+      border-right: 1px solid var(--rule);
+    }
+
+    nav a:first-child {
+      border-left: 1px solid var(--rule);
+    }
+
+    nav a:hover {
+      color: var(--paper);
+      background: var(--ink);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.7fr 1fr;
+      gap: 5%;
+      align-items: center;
+      padding: 35px 0 32px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .hero-image {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 430px;
+      color: white;
+      font-family: var(--mono);
+      font-size: 20px;
+      letter-spacing: .16em;
+      text-align: center;
+      background:
+        linear-gradient(125deg,
+          #252525 0 20%,
+          #6d6a64 20% 43%,
+          #c8c0b4 43% 62%,
+          #484641 62% 78%,
+          #191919 78%);
+      filter: grayscale(1);
+    }
+
+    .hero-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: .25;
+      background-image: radial-gradient(white .8px, transparent .8px);
+      background-size: 5px 5px;
+    }
+
+    .hero-image span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 14px 0 20px;
+      font-family: var(--display);
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      font-style: italic;
+      font-weight: 500;
+      letter-spacing: -.08em;
+      line-height: .88;
+      text-transform: uppercase;
+    }
+
+    h2 em {
+      font-weight: 700;
+    }
+
+    .hero-text p {
+      max-width: 380px;
+      font-size: 1.05rem;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .read-more,
+    .arrow-link {
+      display: inline-block;
+      margin-top: 12px;
+      padding-bottom: 4px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-decoration: none;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--ink);
+    }
+
+    .topics {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .columns {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    article {
+      min-height: 320px;
+      padding: 28px 24px 32px;
+      border-right: 1px solid var(--rule);
+    }
+
+    article:first-child {
+      padding-left: 0;
+    }
+
+    article:last-child {
+      padding-right: 0;
+      border-right: none;
+    }
+
+    h3 {
+      margin: 10px 0 16px;
+      font-family: var(--display);
+      font-size: 1.65rem;
+      font-weight: 500;
+      line-height: 1.05;
+    }
+
+    .thumb {
+      min-height: 125px;
+      margin: 15px 0 12px;
+      border: 1px solid var(--ink);
+      filter: grayscale(1);
+    }
+
+    .thumb-one {
+      background: linear-gradient(140deg, #222 0 35%, #c3bdb2 35% 57%, #555 57%);
+    }
+
+    .thumb-two {
+      background: linear-gradient(90deg, #282828 0 22%, #b7b1a5 22% 40%, #514e48 40% 60%, #d8d1c5 60%);
+    }
+
+    .thumb-three {
+      background: linear-gradient(130deg, #3b3935 0 44%, #d8d1c4 44% 52%, #777 52%);
+    }
+
+    .thumb-four {
+      background:
+        radial-gradient(circle at 65% 40%, #222 0 12%, transparent 13%),
+        #aaa59b;
+    }
+
+    .thumb-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .thumb-grid .thumb {
+      min-height: 68px;
+      margin: 0;
+    }
+
+    .caption {
+      color: var(--muted);
+      font-size: .75rem;
+      line-height: 1.35;
+    }
+
+    blockquote {
+      margin: 26px 0 0;
+      padding-top: 14px;
+      border-top: 1px solid var(--rule);
+      font-family: var(--display);
+      font-size: 1.05rem;
+      font-style: italic;
+    }
+
+    .classifieds {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr 1fr;
+      gap: 25px;
+      align-items: center;
+      padding: 25px 0;
+      border-bottom: 3px double var(--ink);
+    }
+
+    .classifieds h3 {
+      margin: 8px 0 0;
+    }
+
+    .classifieds p {
+      margin: 0;
+      font-size: .9rem;
+    }
+
+    .classifieds a {
+      text-decoration: none;
+      border-bottom: 1px solid var(--ink);
+    }
+
+    footer {
+      padding-top: 16px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 720px) {
+      .paper {
+        width: calc(100% - 16px);
+        margin: 8px auto;
+        padding: 18px 16px;
+      }
+
+      .topline span:nth-child(2) {
+        display: none;
+      }
+
+      .masthead {
+        gap: 10px;
+      }
+
+      .moon {
+        width: 42px;
+        height: 42px;
+        font-size: 25px;
+      }
+
+      h1 {
+        font-size: clamp(3rem, 14vw, 6rem);
+      }
+
+      .issue {
+        font-size: 9px;
+        padding: 5px;
+      }
+
+      nav {
+        justify-content: flex-start;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+
+      nav a {
+        padding: 8px 10px;
+        font-size: 10px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .hero-image {
+        min-height: 330px;
+      }
+
+      .columns {
+        grid-template-columns: 1fr;
+      }
+
+      article,
+      article:first-child,
+      article:last-child {
+        min-height: auto;
+        padding: 25px 0;
+        border-right: none;
+        border-bottom: 1px solid var(--rule);
+      }
+
+      article:last-child {
+        border-bottom: none;
+      }
+
+      .classifieds {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="paper">
+
+    <header>
+      <div class="topline tiny">
+        <span>Vol. I · No. 01</span>
+        <span>Published whenever something interesting happens</span>
+        <span>Est. 2026</span>
+      </div>
+
+      <div class="masthead">
+        <div class="moon">☾</div>
+
+        <div>
+          <div class="tiny">A personal online paper</div>
+          <h1>The Daily Me</h1>
+        </div>
+
+        <div class="issue tiny">
+          Issue<br>
+          <strong>No. 01</strong><br>
+          November 2026
+        </div>
+      </div>
+
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#works">Works</a>
+        <a href="#archive">Archive</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="home">
+      <div class="hero-image">
+        <span>PLACEHOLDER<br>PHOTO</span>
+      </div>
+
+      <div class="hero-text">
+        <div class="label">The lead story</div>
+
+        <h2>
+          A little<br>
+          journal <em>of me</em>
+        </h2>
+
+        <p>
+          Placeholder text for a short, warm introduction.
+          A few sentences about who you are, what you make,
+          and the things you keep noticing.
+        </p>
+
+        <a class="read-more" href="#about">
+          Read the full story →
+        </a>
+      </div>
+    </section>
+
+    <div class="topics">
+      <span>Design</span>
+      <span>✦</span>
+      <span>Photography</span>
+      <span>✦</span>
+      <span>Writing</span>
+      <span>✦</span>
+      <span>Daily life</span>
+      <span>✦</span>
+      <span>Small observations</span>
+    </div>
+
+    <section class="columns">
+
+      <article id="works">
+        <div class="label">Selected works</div>
+        <h3>Things I’ve been making</h3>
+
+        <div class="thumb thumb-one"></div>
+
+        <p class="caption">
+          A tiny caption about a project, photograph,
+          experiment, or idea.
+        </p>
+
+        <a class="arrow-link" href="#archive">
+          See the collection →
+        </a>
+      </article>
+
+      <article id="about">
+        <div class="label">On my mind</div>
+        <h3>Notes from the editor</h3>
+
+        <p>
+          Placeholder text for a small personal note.
+          It could be about a book, a place, an idea,
+          a recent obsession, or something you are learning.
+        </p>
+
+        <p>
+          Keep these blocks short. The page should feel
+          like a collection of clippings rather than a
+          long biography.
+        </p>
+
+        <blockquote>
+          “A favorite line or small thought goes here.”
+        </blockquote>
+      </article>
+
+      <article id="archive">
+        <div class="label">In the archive</div>
+        <h3>A visual diary</h3>
+
+        <div class="thumb-grid">
+          <div class="thumb thumb-two"></div>
+          <div class="thumb thumb-three"></div>
+          <div class="thumb thumb-four"></div>
+          <div class="thumb thumb-one"></div>
+        </div>
+
+        <a class="arrow-link" href="#contact">
+          Browse the archive →
+        </a>
+      </article>
+
+    </section>
+
+    <section class="classifieds" id="contact">
+      <div>
+        <div class="label">Classifieds</div>
+        <h3>Find me elsewhere</h3>
+      </div>
+
+      <p>
+        Available for thoughtful collaborations,
+        good conversations, and interesting little projects.
+      </p>
+
+      <p>
+        <a href="#">Email ↗</a><br>
+        <a href="#">Instagram ↗</a><br>
+        <a href="#">LinkedIn ↗</a>
+      </p>
+    </section>
+
+    <footer>
+      © 2026 Who Is Annie · Made with curiosity and too many open tabs
+    </footer>
+
+  </main>
 </body>
 </html>
